@@ -6,39 +6,37 @@ def process_input_line(line):
     return line + "<br>" if line.startswith("*") else line
 
 
-def process_question_and_answer(question, answer):
-    question, answer = question.strip(), answer.strip()
+def process_question_and_answer(question, answer=None):
+    question = question.strip()
 
-    if question.endswith("?") and answer.endswith("?"):
-        return f"{question};{answer};Reverse"
+    if question.endswith("?") and (answer is not None) and answer.strip().endswith("?"):
+        return f"{question};{answer.strip()};Reverse"
     elif re.search(r"{{c\d::", question):
-        return f"{question};{answer};Cloze"
-    else:
-        return f"{question};{answer};Basic"
+        return f"{question};;Cloze"
+    elif answer is not None:
+        return f"{question};{answer.strip()};Basic"
 
 
 def convert_text_to_anki(input_text, deck_name):
     lines = input_text.splitlines()
     output_lines = [f"#notetype column:3", f"#deck:{deck_name}"]
 
-    question, answer = "", ""
+    question, answer = "", None
     for line in lines:
         stripped_line = line.strip()
 
-        # If the line is empty, we're done with the current question and answer
         if not stripped_line:
-            if question and answer:
+            if question and (answer is not None or re.search(r"{{c\d::", question)):
                 output_lines.append(process_question_and_answer(question, answer))
-                question, answer = "", ""
+                question, answer = "", None
             continue
 
         if not question:
             question = stripped_line
-        else:
-            answer += process_input_line(line)
+        elif not re.search(r"{{c\d::", question):
+            answer = answer + process_input_line(line) if answer else process_input_line(line)
 
-    # If we have a question and answer left over, add them to the output
-    if question and answer:
+    if question and (answer is not None or re.search(r"{{c\d::", question)):
         output_lines.append(process_question_and_answer(question, answer))
 
     return "\n".join(output_lines)
