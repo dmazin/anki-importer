@@ -3,14 +3,11 @@ import re
 
 
 def process_input_line(line):
-    if line.startswith("*"):
-        return line + "<br>"
-    return line
+    return line + "<br>" if line.startswith("*") else line
 
 
 def process_question_and_answer(question, answer):
-    question = question.strip()
-    answer = answer.strip()
+    question, answer = question.strip(), answer.strip()
 
     if question.endswith("?") and answer.endswith("?"):
         return f"{question};{answer};Reverse"
@@ -24,38 +21,27 @@ def convert_text_to_anki(input_text, deck_name):
     lines = input_text.splitlines()
     output_lines = [f"#notetype column:3", f"#deck:{deck_name}"]
 
-    question = ""
-    answer = ""
+    question, answer = "", ""
     for line in lines:
         stripped_line = line.strip()
+
         # If the line is empty, we're done with the current question and answer
         if not stripped_line:
             if question and answer:
                 output_lines.append(process_question_and_answer(question, answer))
-                question = ""
-                answer = ""
+                question, answer = "", ""
             continue
 
         if not question:
-            question = process_question(question, line)
+            question = stripped_line
         else:
-            answer = process_answer(answer, line)
+            answer += process_input_line(line)
 
     # If we have a question and answer left over, add them to the output
     if question and answer:
         output_lines.append(process_question_and_answer(question, answer))
 
     return "\n".join(output_lines)
-
-
-def process_question(question, line):
-    if not question:
-        return line.strip()
-    return question
-
-
-def process_answer(answer, line):
-    return answer + process_input_line(line)
 
 
 def main():
