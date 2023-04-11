@@ -17,10 +17,9 @@ class TestAnkiConversion(unittest.TestCase):
 
     def test_convert_text_to_anki(self):
         input_text = "What is Python?\nA programming language?\n\n{{c1::Python}} is a programming language."
-        deck_name = "Test Deck"
-        expected_output = "#notetype column:3\n#deck:Test Deck\nWhat is Python?;A programming language?;Reverse\n" \
+        expected_output = "#notetype column:3\nWhat is Python?;A programming language?;Reverse\n" \
                           "{{c1::Python}} is a programming language.;;Cloze"
-        self.assertEqual(convert_text_to_anki(input_text, deck_name), expected_output)
+        self.assertEqual(convert_text_to_anki(input_text), expected_output)
 
 if __name__ == '__main__':
     unittest.main()

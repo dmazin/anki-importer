@@ -17,9 +17,9 @@ def process_question_and_answer(question, answer=None):
         return f"{question};{answer.strip()};Basic"
 
 
-def convert_text_to_anki(input_text, deck_name):
+def convert_text_to_anki(input_text):
     lines = input_text.splitlines()
-    output_lines = [f"#notetype column:3", f"#deck:{deck_name}"]
+    output_lines = [f"#notetype column:3"]
 
     question, answer = "", None
     for line in lines:
@@ -45,13 +45,12 @@ def convert_text_to_anki(input_text, deck_name):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("input_file", help="Input text file with questions and answers")
-    parser.add_argument("--deck", help="Name of the Anki deck", required=True)
     args = parser.parse_args()
 
     with open(args.input_file, "r") as f_input:
         input_text = f_input.read()
 
-    output_text = convert_text_to_anki(input_text, args.deck)
+    output_text = convert_text_to_anki(input_text)
 
     with open("anki.txt", "w") as f_output:
         f_output.write(output_text)
