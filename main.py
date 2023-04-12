@@ -16,6 +16,8 @@ def process_question_and_answer(question, answer=None):
     elif answer is not None:
         return f"{question};{answer.strip()};Basic"
 
+    raise ValueError("Invalid question and answer combination")
+
 
 def convert_text_to_anki(input_text):
     lines = input_text.splitlines()
