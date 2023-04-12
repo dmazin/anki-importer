@@ -12,7 +12,7 @@ def process_question_and_answer(question, answer=None):
     if question.endswith("?") and (answer is not None) and answer.strip().endswith("?"):
         return f"{question};{answer.strip()};Reverse"
     elif re.search(r"{{c\d::", question) or (answer and re.search(r"{{c\d::", answer)):
-        return f"{question};{answer};Cloze"
+        return f"{question};{answer if answer else ''};Cloze"
     elif answer is not None:
         return f"{question};{answer.strip()};Basic"
 
