@@ -21,13 +21,13 @@ def process_question_and_answer(question, answer=None):
 
 def convert_text_to_anki(input_text):
     lines = input_text.splitlines()
-    output_lines = [f"#notetype column:3"]
+    output_lines = ["#notetype column:3"]
 
     question, answer = "", None
     for line in lines:
         stripped_line = line.strip()
 
-        if not stripped_line:
+        if not stripped_line or stripped_line.startswith("#"):
             if question and (answer is not None or re.search(r"{{c\d::", question)):
                 output_lines.append(process_question_and_answer(question, answer))
                 question, answer = "", None
