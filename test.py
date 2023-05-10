@@ -7,7 +7,7 @@ from main import (
 
 
 class TestAnkiConversion(unittest.TestCase):
-    def test_process_question_and_answer(self):
+    def test_process_question_and_answer_reverse(self):
         self.assertEqual(
             process_question_and_answer(
                 "What is Python?",
@@ -15,10 +15,14 @@ class TestAnkiConversion(unittest.TestCase):
             ),
             "What is Python?;What is the Ruby-like programming language starting with a p?;Reverse",
         )
+
+    def test_process_question_and_answer_cloze(self):
         self.assertEqual(
             process_question_and_answer("{{c1::Python}} is a programming language."),
             "{{c1::Python}} is a programming language.;;Cloze",
         )
+
+    def test_process_question_and_answer_basic(self):
         self.assertEqual(
             process_question_and_answer("What is Python?", "A programming language."),
             "What is Python?;A programming language.;Basic",
