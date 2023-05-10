@@ -2,21 +2,21 @@ import argparse
 import re
 
 
-def process_input_line(line):
-    return line + "<br>" if line.startswith("*") else line
-
-
 def process_question_and_answer(question, answer=None):
     question = question.strip()
 
     if question.endswith("?") and (answer is not None) and answer.strip().endswith("?"):
         return f"{question};{answer.strip()};Reverse"
-    elif re.search(r"{{c\d::", question) or (answer and re.search(r"{{c\d::", answer)):
-        return f"{question};{answer if answer else ''};Cloze"
+    elif is_cloze(question) or (answer and is_cloze(answer)):
+        return f"{question}{('<br>'+answer) if answer else ''};;Cloze"
     elif answer is not None:
         return f"{question};{answer.strip()};Basic"
 
     raise ValueError("Invalid question and answer combination")
+
+
+def is_cloze(line: str) -> bool:
+    return bool(re.search(r"{{c\d::", line))
 
 
 def convert_text_to_anki(input_text):
@@ -28,17 +28,17 @@ def convert_text_to_anki(input_text):
         stripped_line = line.strip()
 
         if not stripped_line or stripped_line.startswith("#"):
-            if question and (answer is not None or re.search(r"{{c\d::", question)):
+            if question and (answer is not None or is_cloze(question)):
                 output_lines.append(process_question_and_answer(question, answer))
                 question, answer = "", None
             continue
 
         if not question:
             question = stripped_line
-        elif not re.search(r"{{c\d::", question):
-            answer = answer + process_input_line(line) if answer else process_input_line(line)
+        elif not is_cloze(question):
+            answer = answer + f"<br>{line}" if answer else line
 
-    if question and (answer is not None or re.search(r"{{c\d::", question)):
+    if question and (answer is not None or is_cloze(question)):
         output_lines.append(process_question_and_answer(question, answer))
 
     return "\n".join(output_lines)
