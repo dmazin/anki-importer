@@ -60,6 +60,12 @@ class TestAnkiConversion(unittest.TestCase):
         expected_output = "#notetype column:3\necho 1 to 10 using a bash for loop<br>{{c1::for i in $(seq 1 10)}}<br>{{c2::do echo $i}}<br>{{c3::done}};;Cloze"
         self.assertEqual(convert_text_to_anki(input_question), expected_output)
 
+    def test_text_is_bolded(self):
+        # if an input word is **surrounded by double asterisks**, it should be bolded (<b>)
+        input_question = "What is **Python**?"
+        expected_output = "#notetype column:3\nWhat is <b>Python</b>?;A programming language.;Basic"
+        self.assertEqual(convert_text_to_anki(input_question), expected_output)
+
     def test_is_cloze(self):
         self.assertTrue(is_cloze("{{c1::bio layer}}"))
         self.assertFalse(is_cloze("bio layer"))
