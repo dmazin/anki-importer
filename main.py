@@ -2,8 +2,12 @@ import argparse
 import re
 
 
-def process_question_and_answer(question, answer=None, tag=''):
+def process_question_and_answer(question, answer=None, tag=""):
     question = question.strip()
+
+    question = bold_replace(question)
+    if answer:
+        answer = bold_replace(answer)
 
     if question.endswith("?") and (answer is not None) and answer.strip().endswith("?"):
         return f"{question};{answer.strip()};Reverse;{tag}"
@@ -19,12 +23,16 @@ def is_cloze(line: str) -> bool:
     return bool(re.search(r"{{c\d::", line))
 
 
+def bold_replace(s):
+    return s.replace("**", "<b>", 1).replace("**", "</b>", 1)
+
+
 def convert_text_to_anki(input_text):
     lines = input_text.splitlines()
     output_lines = ["#notetype column:3", "#tags column:4"]
 
     question, answer = "", None
-    tag = ''
+    tag = ""
     for line in lines:
         stripped_line = line.strip()
 
