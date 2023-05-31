@@ -60,8 +60,8 @@ class TestAnkiConversion(unittest.TestCase):
         self.assertEqual(convert_text_to_anki(input_question), expected_output)
 
     def test_multiple_tags(self):
-        input_text = "What is the meaning of life?\n42.\n\n#TAG:Linux\nWhat is Linux?\nAn OSS kernel.\n\n#TAG:Python\nWhat is Python?\nA programming language."
-        expected_output = "#notetype column:3\n#tags column:4\nWhat is the meaning of life?;42.;Basic;\nWhat is Linux?;An OSS kernel.;Basic;Linux\nWhat is Python?;A programming language.;Basic;Python"
+        input_text = "What is the meaning of life?\n42.\n\n#TAG:Linux\nWhat is Linux?\nAn OSS kernel.\n\n#TAG:Python\nWhat is Python?\nA programming language.\n\n#tag:\nThis should have no tag.\nYep, no tag."
+        expected_output = "#notetype column:3\n#tags column:4\nWhat is the meaning of life?;42.;Basic;\nWhat is Linux?;An OSS kernel.;Basic;Linux\nWhat is Python?;A programming language.;Basic;Python\nThis should have no tag.;Yep, no tag.;Basic;"
         self.assertEqual(convert_text_to_anki(input_text), expected_output)
 
     def test_text_is_bolded(self):

@@ -36,8 +36,12 @@ def convert_text_to_anki(input_text):
     for line in lines:
         stripped_line = line.strip()
 
-        if stripped_line.startswith("#TAG:"):
-            tag = stripped_line.split(":")[-1]
+        if stripped_line.lower().startswith("#tag:"):
+            split_tag = stripped_line.split(":")
+            if len(split_tag) == 1:
+                tag = ''
+            else:
+                tag = split_tag[1]
 
         if not stripped_line or stripped_line.startswith("#"):
             if question and (answer is not None or is_cloze(question)):
