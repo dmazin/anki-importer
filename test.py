@@ -62,9 +62,9 @@ class TestAnkiConversion(unittest.TestCase):
 
     def test_text_is_bolded(self):
         # if an input word is **surrounded by double asterisks**, it should be bolded (<b>)
-        input_question = "What is **Python**?"
+        input_text = "What is **Python**?\nA programming language."
         expected_output = "#notetype column:3\nWhat is <b>Python</b>?;A programming language.;Basic"
-        self.assertEqual(convert_text_to_anki(input_question), expected_output)
+        self.assertEqual(convert_text_to_anki(input_text), expected_output)
 
     def test_is_cloze(self):
         self.assertTrue(is_cloze("{{c1::bio layer}}"))
