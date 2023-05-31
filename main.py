@@ -2,15 +2,15 @@ import argparse
 import re
 
 
-def process_question_and_answer(question, answer=None):
+def process_question_and_answer(question, answer=None, tag=''):
     question = question.strip()
 
     if question.endswith("?") and (answer is not None) and answer.strip().endswith("?"):
-        return f"{question};{answer.strip()};Reverse"
+        return f"{question};{answer.strip()};Reverse;{tag}"
     elif is_cloze(question) or (answer and is_cloze(answer)):
-        return f"{question}{('<br>'+answer) if answer else ''};;Cloze"
+        return f"{question}{('<br>'+answer) if answer else ''};;Cloze;{tag}"
     elif answer is not None:
-        return f"{question};{answer.strip()};Basic"
+        return f"{question};{answer.strip()};Basic;{tag}"
 
     raise ValueError("Invalid question and answer combination")
 
@@ -21,15 +21,19 @@ def is_cloze(line: str) -> bool:
 
 def convert_text_to_anki(input_text):
     lines = input_text.splitlines()
-    output_lines = ["#notetype column:3"]
+    output_lines = ["#notetype column:3", "#tags column:4"]
 
     question, answer = "", None
+    tag = ''
     for line in lines:
         stripped_line = line.strip()
 
+        if stripped_line.startswith("#TAG:"):
+            tag = stripped_line.split(":")[-1]
+
         if not stripped_line or stripped_line.startswith("#"):
             if question and (answer is not None or is_cloze(question)):
-                output_lines.append(process_question_and_answer(question, answer))
+                output_lines.append(process_question_and_answer(question, answer, tag))
                 question, answer = "", None
             continue
 
@@ -39,7 +43,7 @@ def convert_text_to_anki(input_text):
             answer = answer + f"<br>{line}" if answer else line
 
     if question and (answer is not None or is_cloze(question)):
-        output_lines.append(process_question_and_answer(question, answer))
+        output_lines.append(process_question_and_answer(question, answer, tag))
 
     return "\n".join(output_lines)
 
