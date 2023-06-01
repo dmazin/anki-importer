@@ -54,6 +54,12 @@ class TestAnkiConversion(unittest.TestCase):
         expected_output = "#notetype column:3\n#tags column:4\nRoughly into what two layers can we split up the block layer?<br>* {{c1::bio layer}}<br>* {{c2::request layer}};;Cloze;"
         self.assertEqual(convert_text_to_anki(input_question), expected_output)
 
+    def test_multi_item_cloze_with_cloze_in_first_line(self):
+        # Special case of test_multi_item_cloze.
+        input_question = "Roughly into what {{c3::two}} layers can we split up the block layer?\n* {{c1::bio layer}}\n* {{c2::request layer}}"
+        expected_output = "#notetype column:3\n#tags column:4\nRoughly into what {{c3::two}} layers can we split up the block layer?<br>* {{c1::bio layer}}<br>* {{c2::request layer}};;Cloze;"
+        self.assertEqual(convert_text_to_anki(input_question), expected_output)
+
     def test_multiline_cloze(self):
         input_question = "echo 1 to 10 using a bash for loop\n{{c1::for i in $(seq 1 10)}}\n{{c2::do echo $i}}\n{{c3::done}}"
         expected_output = "#notetype column:3\n#tags column:4\necho 1 to 10 using a bash for loop<br>{{c1::for i in $(seq 1 10)}}<br>{{c2::do echo $i}}<br>{{c3::done}};;Cloze;"
