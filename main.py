@@ -30,14 +30,27 @@ def bold_replace(s):
 
 def convert_text_to_anki(input_text):
     """
-    Some rules for conversion.
+    This will be a reverse note where the front is the first line, and the back
+    is the second line.
+    What is a synonym for positive predictive value?
+    What is a synonym for precision?
 
-    * Only for cloze notes, it's possible for there to be no "answer" card.
-    * If both the question and answer cards end in question marks, the card type will be Reverse.
+    This will be a cloze note where all the lines will be the main field.
+    What are the DNS records used to prevent email sender field spoofing?
+    * {{c1::SPF}}
+    * {{c2::DKIM}}
+    * {{c3::DMARC}}
+
+    This will be a basic note where the front is the first line, and the back is
+    the second line.
+    In terms of networking, what does ASN stand for?
+    Autonomous system number.
+
     * Each note is separated by a whitespace or a line starting with '#'.
     * \n's are turned into <br>
     * words **surrounded** like so will get wrapped in <b> tags
-    * it's possible for the answer card to have multiple lines, but not the 
+    * it's possible for the front card to have multiple lines, but not the back
+      card
     """
     lines = input_text.splitlines()
     output_lines = ["#notetype column:3", "#tags column:4"]
