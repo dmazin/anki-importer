@@ -823,5 +823,11 @@ The "super" key.
 What keys does MEH key actually stand for?
 alt-shift-ctrl
 
-aWhat keys does HYPER key actually stand for?
+What keys does HYPER key actually stand for?
 alt-shift-ctrl-super
+
+What do you call Wayland, X, etc?
+A display server.
+
+What display server does Ubuntu 22 desktop use?
+{{c1::Wayland}}, unless {{c2::you use an nvidia graphics card}}, in which case it uses {{c3::X}}
