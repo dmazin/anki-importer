@@ -1,0 +1,391 @@
+# This is a set of Anki cards. Example:
+# What is meant by "resident memory"?
+# What do you call memory that currently resides in main memory?
+# 
+# What is the synonym for physical memory?
+# What is the synonym for main memory?
+# 
+# What kind of memory is the heap (in terms of paging)?
+# Anonymous memory.
+# 
+# Historically, how big have memory pages been? (2 values)
+# 4 or 8 KB.
+# 
+# How can virtual memory be bigger than main memory?
+# Swapping.
+# 
+# What are the two kinds of paging?
+# * file system paging
+# * swapping
+# 
+# What is a synonym for swapping?
+# What is a synonym for anonymous paging?
+# 
+# Why is anonymous paging called anonymous?
+# Because it doesn't refer to data with any defined file system location.
+# 
+# In terms of memory, what does RSS stand for?
+# Resident Set Size.
+# 
+# What is the difference between allocated and mapped memory?
+# Allocated memory has been reserved in virtual memory, but not necessarily mapped to a location in physical memory.
+# 
+# What does resident set size measure?
+# The amount of memory that has been allocated and mapped to physical memory.
+# 
+# What does virtual memory size measure?
+# The amount of memory that has been allocated in virtual memory, whether or not it has been mapped.
+# 
+# Besides being mapped to physical memory, what else might a virtual address be mapped to?
+# Swap.
+# 
+# What was the maximum process size on the PDP-11?
+# 64 KB.
+# 
+# What are the states that a page of virtual memory can be in? (4)
+# * {{c1::unallocated}}
+# * {{c2::allocated, but unmappped}}
+# * {{c3::allocated and mapped to main memory}}
+# * {{c4::allocated and mapped to swap}}
+# 
+# What stdlib function is used to allocate memory?
+# malloc.
+# 
+# In terms of memory, what does PSS stand for?
+# Proportional Set Size.
+# 
+# What does proportional set size measure?
+# The private memory usage of a process, excluding shared memory.
+# 
+# Which tool can I use to measure proportional set size?
+# pmap.
+# 
+# What's the maximum amount of memory a 32bit process can address?
+# 4 GB.
+# 
+# On Linux, how much virtual memory is reserved for the kernel?
+# 1 GB.
+# 
+# What does DRAM stand for?
+# Dynamic Random Access Memory.
+# 
+# What two electrical components are used for each bit in DRAM?
+# A capacitor and a transistor.
+# 
+# Why does DRAM lose values when power is removed?
+# Because a capacitor loses charge without power.
+# 
+# What do we use to measure the access time of main memory?
+# The time between sending a memory module the desired address and when the data is available to be read.
+# 
+# What is the weird term used to refer to main memory access time?
+# Column address strobe.
+# 
+# Per Gregg, what is the access latency for DDR4?
+# 10-20 ns.
+# 
+# Per Gregg, in a web applications context, what was the threshold for thinking that disk IO was slow?
+# 50 ms.
+
+# Per Gregg, in the context of offline disk storage (not in a web context), what was the threshold for thinking that disk IO was slow?
+# 10 ms.
+
+# What does the kernel do after a program has allocated memory?
+# It maps it to a physical location.
+
+# What does NUMA stand for?
+# Non-Uniform Memory Access.
+
+# In UMA, how do CPUs access memory?
+# Via a shared system bus.
+
+# In terms of memory, what's the difference between UMA and NUMA?
+# In NUMA, each CPU has its own memory.
+
+# What do you call the memory attached to each CPU in NUMA?
+# Local memory.
+
+# In terms of memory, what does DDR stand for?
+# Double Data Rate.
+
+# What does double data rate mean?
+# Transfers happen on both the rise and fall of the clock signal.
+
+# For SDRAM, what is meant by synchronous?
+# The clock speed of the memory is the same as the clock speed of the CPU.
+
+# Roughly what is the bandwidth of memory?
+# Tens of gigabytes per second.
+
+# The virtual-to-physical address translation is performed on what unit?
+# A page.
+
+# Where do page tables live?
+# Main memory.
+
+# What's the difference between L1, and L2/L3?
+# L1 is connected directly to the CPU, while L2 and L3 are connected via the MMU.
+
+# What do you call the daemon that finds pages to swap out?
+# What does kswapd do?
+
+# What do you call the file system's cache?
+# What is the page cache?
+
+# What do you call a list of pages available for allocation?
+# What is a free list?
+
+# What is the swappiness parameter?
+# It controls whether the kernel will prefer to free memory by paging applications or freeing memory from the page cache.
+
+# What does a higher swappiness parameter value mean?
+# The kernel will prefer to free memory by paging applications.
+
+# What is the default swappiness parameter value?
+# 60.
+
+# In terms of memory management, what is reaping?
+# Freeing any memory that can easily be freed.
+
+# What long flag do I pass to `perf trace` to make it print absolute time stamps?
+# --time
+
+# What is a pre-requisite for a disk's elevator algorithm?
+# The disk must buffer operations so it can reorder them.
+
+# Briefly describe a disks's elevator algorithm.
+# Instead of serving operations as they come in, a disk buffers them, and then serves them in order of their location on the disk.
+
+# Describe a possible negative outcome of the disk elevator algorithm.
+# A disk has been issued operations at offsets 1,000 and 2,000. Then more and more operations are issued at 1,000, and the disk keeps serving them because they are in order. This hurts the latency of the operations at 2,000.
+
+# What do hard disks store at the end of every sector?
+# An error-correcting code.
+
+# Which workloads is SMR better for?
+# Workloads that write once, but mostly read.
+
+# What does SMR stand for?
+# Shingled Magnetic Recording.
+
+# What kind of memory do most SSDs use?
+# Flash memory.
+
+# What is the source of slowness for flash-based SSD writes?
+# When writing, you must erase and then rewrite a large block of memory at a time.
+
+# How can flash-based SSDs mitigate slow writes?
+# They use an on-disk write-back cache.
+
+# Per Gregg, ususally how big is an SSD page?
+# 8 KB.
+
+# How much do SSDs read at a time?
+# A page.
+
+# How much do SSDs write at a time? (Unit: pages; range)
+# Blocks of 32-64 pages.
+
+# How much do SSDs write at a time? (Unit: bytes; range)
+# 256-512 KB.
+
+# For a flash-based SSD, what might happen if you write smaller than the block size?
+# The SSD has to copy the rest of a block elsewhere, then erase the block.
+
+# How big are the sectors presented by an SSD controller to the OS?
+# They mimic hard disks, so 512-4096 bytes.
+
+# What subcommand do I pass to `perf` to trace a tracepoint?
+# trace
+
+# What short flag do I pass to `perf trace` to specify what to trace?
+# -e
+
+# What bpftrace function should I use to resolve __data_loc args?
+# str
+
+# What bpftrace variable holds the kernel stack?
+# kstack
+# How can RAID 5 performance be improved? (Without using a volatile write cache)
+# Match the stripe size to the average IO size.
+
+# What tracepoint do I trace to trace bio requests to the disk driver?
+# What does block:block_rq_issue trace?
+
+# What tracepoint do I trace to trace bio requests being put on the kernel's queue?
+# What does block:block_rq_insert trace?
+
+# For block:block_rq_issue, what is the name of the field that tells you what kind of request it was?
+# For block:block_rq_issue, what does the rwbs field tell you?
+
+# What is a big advantage of BPF over other tracers?
+# While other tracers require you to dump information to userspace for post-processing, BPF can do all the processing in the kernel.
+
+# What is the minimum recommended kernel version for BPF?
+# 4.9
+
+# Can bpftrace tools be run on production?
+# Yes.
+
+# What type of probe do I use in bpftrace to profile the CPU at 49 Hz?
+# profile:hz:49
+ 
+# What probe fires at the beginning of a bpftrace program?
+# BEGIN
+
+# What probe fires at the end of a bpftrace program?
+# END
+
+# In bpftrace, when you pass /pid/ to the filter expression, what does it test for?
+# In bpftrace, how do you test that pid is non-zero?
+
+# In bpftrace, how would I store the value 42 in a scratch variable called meaning_of_life?
+# $meaning_of_life = 42
+
+# In bpftrace, what function turns a string pointer into a string?
+# str
+
+# In bpftrace, what built-in var tells me the current timestamp in nanoseconds?
+# In bpftrace, does does the nsecs built-in var tell me?
+
+# In bpftrace, what built-in var tells me the current program ID?
+# pid
+
+# In bpftrace, what built-in var tells me the name of the current process?
+# In bpftrace, what does the **comm** built-in var tell me?
+
+# In bpftrace, what do I use to specify a global variable?
+# In bpftrace, what does @ mean?
+
+# In bpftrace, what built-in var tells me the ID of the current thread?
+# In bpftrace, what does the **tid** built-in var tell me?
+
+# What does bpftrace do to all maps when it exits?
+# It prints them.
+
+# In bpftrace, is count() per-CPU or global?
+# Per-CPU.
+
+# In bpftrace, what can I optionally pass to str?
+# An int `len`, which limits the length of the string.
+
+# How do I prevent `dd` from truncating the output file?
+# conv=notrunc
+
+# In bash, how do I do arithmetic? (Answer is two words)
+# In bash, what do double parentheses do?
+
+# What utility might I use to find out the sector size of a disk?
+# fdisk
+
+# What do you call the hardware that network ports and the network controller live on?
+# The network interface card.
+
+# Under the OSI model, at the transport layer a message is called a {{c1::segment}} or {{c2::datagram}}. At the network layer it's called a {{c3::packet}}. At the data link layer it's called a {{c4::frame}}.
+
+# What do you call Ethernet frames that support up to 9,000 bytes?
+# What are jumbo frames?
+
+# What is one advantage of bigger memory pages?
+# There are fewer pages, and therefore fewer entires in the TLB, and therefore fewer TLB misses.
+
+# What major hardware change highlighted many bottlenecks in the Linux block layer?
+# The introduction of SSDs.
+
+# What is the rough max IOPS for a high-end hard drive?
+# Less than 1000.
+
+# Roughly what is the IOPS of an SDD?
+# 100s of thousands.
+
+# What is the difference between kilobytes and kibibytes?
+# Kibibytes measure in powers of 2.
+
+# How many bytes is 1 kibibyte?
+# 1024
+
+# Which file system are many fs's based on?
+# The Berkeley fast file system.
+
+# What can I use to inspect the ext3/ext4 journal?
+# debugfs logdump
+
+# What does Gregg say is special about CockroachDB?
+# It's cloud-native.
+
+# Which CNI plugin is based on BPF?
+# Cilium
+
+# Which CNI plugin is based on netfilter?
+# Calico
+
+# Which CNI plugin provides a BPF replacement for kube-proxy?
+# Cilium
+
+# What are type 1 hypervisors?
+# What "type" are bare metal hypervisors?
+
+# What is a common example of a bare metal hypervisor?
+# Xen
+
+# A type 1 hypervisor is a/an {{c1::operating system}} that runs {{c2::directly on hardware}}.
+
+# What has blurred the line between type 1 and type 2 hypervisors?
+# Type 2 hypervisors have access to kernel modules which give them direct hardware access.
+
+# What is a common example of a type 2 hypervisor?
+# KVM
+
+# A type 2 hypervisor is a collection of {{c1::kernel modules}} and {{c2::user-level processes}}.
+
+# In a type 1 hypervisor, what manages the guest OS's?
+# A special guest OS.
+
+# What does paravirtualization allow?
+# It gives guest OS's the ability to use host resources without virtualization.
+
+# What is like a system call, but in the context of paravirtualization?
+# A hypercall.
+
+# What is a limitation of paravirtualization?
+# The guest OS must be aware that it is virtualized and must know how to use hypercalls.
+
+# What does QEMU stand for?
+# Quick emulator.
+
+# What hypervisor did EC2 use before Nitro?
+# Xen
+
+# What hypervisor does GCE use?
+# KVM
+
+# What is KVM usually paired with?
+# QEMU
+
+# EC2's nitro can conceptually be thought as...
+# KVM without the need for QEMU
+
+# What are some improvements to virtualization over the years?
+# * {{c1::processor virtualization support}}
+# * {{c2::paravirtualization}}
+# * {{c3::device hardware support}}
+
+# Briefly, what does device hardware support, in the context of virtualization?
+# Direct hardware access for a guest OS.
+
+# In the context of virtualization, why might CPU-bound applications run without overhead over bare metal?
+# Because their instructions can run directly on the processors.
+
+# How are kernel and user modes implemented on processors?
+# As privilege rings.
+
+# Synonym for privilege rings?
+# Synonym for protection rings?
+
+# How many privilege rings are there typically for x86 processors?
+# 4
+
+# What privilege rings are typically used for x86 processors?
+# * {{c1::kernel mode}}
+# * {{c2::user mode}}
+# * {{c3::hypervisor}}

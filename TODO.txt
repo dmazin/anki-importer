@@ -1,0 +1,2 @@
+- [ ] If the field contains a semicolon, then it should be wrapped in double quotes
+- [ ] Fields with < > don't seem to work (guess they should be wrapped in double quotes)
