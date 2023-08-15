@@ -792,42 +792,42 @@
 # 1password autofill shortcut
 # [cmd-\]
 
-In what file can I view the kernel command line arguments for the currently running system?
-/proc/cmdline
+# In what file can I view the kernel command line arguments for the currently running system?
+# /proc/cmdline
 
-What utility (with short flag) do I use to view Linux tunables?
-sysctl -a
+# What utility (with short flag) do I use to view Linux tunables?
+# sysctl -a
 
-What is the difference between the stuff in /proc/cmdline and the stuff returned by sysctl -a?
-/proc/cmdline stuff is called kernel parameters (or command-line arguments).
-The stuff in sysctl -a is called tunables.
+# What is the difference between the stuff in /proc/cmdline and the stuff returned by sysctl -a?
+# /proc/cmdline stuff is called kernel parameters (or command-line arguments).
+# The stuff in sysctl -a is called tunables.
 
-rsync: Short flag to both display a progress bar and keep partially-copied file.
--P
+# rsync: Short flag to both display a progress bar and keep partially-copied file.
+# -P
 
-rsync: Delete original file after copying it. (long flag)
---remove-source-files
+# rsync: Delete original file after copying it. (long flag)
+# --remove-source-files
 
-ncdu: Delete highlighted file/directory
-d
+# ncdu: Delete highlighted file/directory
+# d
 
-What is the generally recommended sampler?
-{{c1::DPM++}} {{c2::2M}} {{c3::Karras}}
+# What is the generally recommended sampler?
+# {{c1::DPM++}} {{c2::2M}} {{c3::Karras}}
 
-How can I make the Ansible copy module copy between two locations on the remote device, rather than from my local device to the remote device?
-Set remote_src to true.
+# How can I make the Ansible copy module copy between two locations on the remote device, rather than from my local device to the remote device?
+# Set remote_src to true.
 
-What do Linux users call the Windows/command key?
-The "super" key.
+# What do Linux users call the Windows/command key?
+# The "super" key.
 
-What keys does MEH key actually stand for?
-alt-shift-ctrl
+# What keys does MEH key actually stand for?
+# alt-shift-ctrl
 
-What keys does HYPER key actually stand for?
-alt-shift-ctrl-super
+# What keys does HYPER key actually stand for?
+# alt-shift-ctrl-super
 
-What do you call Wayland, X, etc?
-A display server.
+# What do you call Wayland, X, etc?
+# A display server.
 
-What display server does Ubuntu 22 desktop use?
-{{c1::Wayland}}, unless {{c2::you use an nvidia graphics card}}, in which case it uses {{c3::X}}
+# What display server does Ubuntu 22 desktop use?
+# {{c1::Wayland}}, unless {{c2::you use an nvidia graphics card}}, in which case it uses {{c3::X}}
