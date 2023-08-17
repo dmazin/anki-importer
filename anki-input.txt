@@ -831,3 +831,15 @@
 
 # What display server does Ubuntu 22 desktop use?
 # {{c1::Wayland}}, unless {{c2::you use an nvidia graphics card}}, in which case it uses {{c3::X}}
+
+When running ansible-playbook against localhost, what long flag (with what param) should I pass to make it avoid using SSH?
+{{c1::--connection}} {{c2::local}}
+
+What do you call the utility that will print utilization info about nvidia graphics card?
+nvidia-smi
+
+On most Linux OS, how do I shut down my computer in 4 hours?
+sudo {{c1::shutdown}} {{c2::-h}} {{c2::+240}}
+
+On most Linux OS, how do I cancel a scheduled shutdown?
+sudo {{c1::shutdown}} {{c1::-c}}
