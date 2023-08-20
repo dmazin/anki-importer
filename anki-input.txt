@@ -832,14 +832,50 @@
 # What display server does Ubuntu 22 desktop use?
 # {{c1::Wayland}}, unless {{c2::you use an nvidia graphics card}}, in which case it uses {{c3::X}}
 
-When running ansible-playbook against localhost, what long flag (with what param) should I pass to make it avoid using SSH?
-{{c1::--connection}} {{c2::local}}
+# When running ansible-playbook against localhost, what long flag (with what param) should I pass to make it avoid using SSH?
+# {{c1::--connection}} {{c2::local}}
 
-What do you call the utility that will print utilization info about nvidia graphics card?
-nvidia-smi
+# What do you call the utility that will print utilization info about nvidia graphics card?
+# nvidia-smi
 
-On most Linux OS, how do I shut down my computer in 4 hours?
-sudo {{c1::shutdown}} {{c2::-h}} {{c2::+240}}
+# On most Linux OS, how do I shut down my computer in 4 hours?
+# sudo {{c1::shutdown}} {{c2::-h}} {{c2::+240}}
 
-On most Linux OS, how do I cancel a scheduled shutdown?
-sudo {{c1::shutdown}} {{c1::-c}}
+# On most Linux OS, how do I cancel a scheduled shutdown?
+# sudo {{c1::shutdown}} {{c1::-c}}
+
+# What is my personal alias for `ls -halt | head`?
+# lsh
+
+# What is the name of the library that lets us play around with ext filesystems?
+# e2fsprogs
+
+# After creating a new branch (e.g. named `main`), what do I need to call to create it remotely?
+# git {{c1::push}} {c2::--set-upstream}} {{c3::origin}} {{c3::main}}
+
+# When is Christian Eng's birthday?
+# Sep 30th (the day before mine).
+
+# jbd2: What do you call the mode where we journal only metadata updates?
+# Ordered mode.
+
+# jbd2: What do you call the mode that journals both metadata and file contents?
+# Journal mode.
+
+# Filesystems: what's the difference between blocks and extents?
+# Block filesystems use fixed-sized blocks, while extents are variable-length, preallocated empty space that can be used by one or more blocks.
+
+# What organization created XFS?
+# Silicon Graphics
+
+# What organization created XFS?
+# Sun
+
+# What is the default fs for RHEL?
+# XFS
+
+# Which is the fs that builds in RAID and LVM – XFS or ZFS?
+# ZFS
+
+# What organization created btrfs?
+# Oracle
