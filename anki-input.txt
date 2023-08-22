@@ -879,3 +879,29 @@
 
 # What organization created btrfs?
 # Oracle
+
+#tag:i3
+Open dmenu.
+"<super-d>"
+
+Open terminal.
+"<super-enter>"
+
+Select the window to the right.
+"<mod-rarrow>"
+
+Toggle full screen.
+"<mod-f>"
+
+Close window.
+"<mod-shift-q>"
+
+Move window to the right.
+"<mod-shift-rarrow>"
+
+Before opening window, specify that it should be opened such the windows become more portraity.
+"<mod-h>"
+
+Before opening window, specify that it should be opened such that the windows become more landscapey.
+"<mod-v>"
+

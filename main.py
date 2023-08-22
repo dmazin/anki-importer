@@ -4,10 +4,12 @@ import re
 
 def process_question_and_answer(question, answer=None, tag=""):
     question = question.strip()
+    question = lt_gt_escape(question)
     question = bold_replace(question)
 
     if answer:
         answer = bold_replace(answer)
+        answer = lt_gt_escape(answer)
         answer = answer.strip().replace("\n", "<br>")
 
     if question.endswith("?") and (answer is not None) and answer.endswith("?"):
@@ -27,6 +29,14 @@ def is_cloze(line: str) -> bool:
 def bold_replace(s):
     return s.replace("**", "<b>", 1).replace("**", "</b>", 1)
 
+def lt_gt_escape(s: str) -> str:
+    # Replace '<' not preceded by '&lt;'
+    s = re.sub(r'(?<!&lt;)<', '&lt;', s)
+
+    # Replace '>' not preceded by '&gt;'
+    s = re.sub(r'(?<!&gt;)>', '&gt;', s)
+    
+    return s
 
 def convert_text_to_anki(input_text):
     """
