@@ -879,3 +879,73 @@
 
 # What organization created btrfs?
 # Oracle
+
+# I have created a new local branch named `feature`. How do I push it while also creating the remote branch?
+# git push {{c1::--set-upstream}} {{c2::origin}} {{c2::feature}}
+
+# When a NIC receives a packet, what kind of data structure does it put it in?
+# A ring.
+
+# Synonym for first-byte latency?
+# Synonym for time to first byte?
+
+# What does time to first byte measure?
+# The time between the connection establishement to when the first byte of data is received.
+
+# When we measure RTT, why do we study ICMP echo requests?
+# The purpose of RTT is to measure network (rather than host processing) latency, and IMCP echo requests are fast for hosts to process.
+
+# When measuring RTT, what type of message might we study?
+# ICMP echo requests.
+
+# What is bufferbloat?
+# What do you call undesirable latency incurred by intermediary network equipment buffering too much?
+
+# If a host is overloaded, it may drop TCP packets. Why is this OK (disregarding performance issues)?
+# The packets will be retransmitted.
+
+# What is the tx/rx bandwidth for a full duplex 1 GbE interface? (Give both tx and rx)
+# 1 Gbit/s for each of tx and rx.
+
+# How do we calculate network utilization? (Note that there are subtleties in the answer)
+# Current throughput **for a specific direction** divided by the **negotiated** bandwidth.
+
+# What do you call the network interface used for communication between sockets on the same host?
+# What is the loopback interface?
+
+# For on-host communication, why might Unix domain sockets be more performant than IP sockets?
+# Bypass the TCP/IP stack.
+
+# For an IP packet, what does the ECN field stand for?
+# Explicit Congestion Notification
+
+# For IP packets, what feature allows senders to throttle?
+# The ECN field.
+
+# #tag:TCP
+# What is meant by the sliding window?
+# The sender will send packets whose size sums to the window size without waiting for an ACK.
+
+# How does the sender determine the size of the sliding window?
+# The desired window will be advertised by the receiver.
+
+# What do you call the TCP state once the 3-way handshake is complete?
+# ESTABLISHED.
+
+# What is the difference between the congestion window and the sliding window?
+# The sliding window is determined by the receiver, while the congestion window is determined by the sender and is used in good faith to avoid overloading the receiver.
+
+# What is slow start?
+# The sender starts with a small congestion window and increases (and decreases) it based on network/recipient performance.
+
+# What are the two commonly used algorithms for packet retransmit?
+# * {{c1::timer-based}}
+# * {{c2::fast retransmits}}
+
+# What is a fast retransmit?
+# The packet is retransmitted not because a timer has timed out, but because the sender received duplicate ACK packets.
+
+# What is fast recovery?
+# When duplicate ACKs are detected, reset connection to force slow start.
+
+#tag:
