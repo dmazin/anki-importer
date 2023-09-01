@@ -949,3 +949,85 @@
 # When duplicate ACKs are detected, reset connection to force slow start.
 
 #tag:
+
+# What is dawn?
+# What do you call the period of day when there's first light but the sun hasn't risen yet?
+
+# What is twilight?
+# What do you call the period of day when the sun is just below the horizon and the atmosphere is illuminated?
+
+# Does twilight pertain to morning, evening, or both?
+# Both.
+
+# What is dusk?
+# What do you call the period of time just after sunset when there's still some light but the sun has gone below the horizon?
+
+# What is the relationship between dusk and twilight?
+# Dusk is a form of twilight.
+
+# What is the relationship between dawn and twilight?
+# Dawn is a form of twilight.
+
+# In optics, a **convex** lens is {{c1::thicker}} in the middle than at the edges.
+
+# In optics, a **concave** lens is {{c1::thinner}} in the middle than at the edges.
+
+# How can I remember that concave means that the shape is thinner in the middle than at the edges?
+# Think of caving. A concave shape looks like a narrow passage that a spelunker has to climb through.
+
+# During what age did writing develop?
+# Bronze Age.
+
+# What do you call the earliest period of human history?
+# Paleolithic.
+
+# What kind of tools did humans use during the paleolithic?
+# Stone.
+
+# During what age did agriculture develop?
+# Neolithic.
+
+# What came after the Paleolithic?
+# The Mesolithic.
+
+# What came after the Mesolithic?
+# The Neolithic.
+
+# What came after the Neolithic?
+# The Bronze Age.
+
+# What came after the Bronze Age?
+# The Iron Age.
+
+# In what age did settled communities develop?
+# Neolithic.
+
+# When discussing when various ages (e.g. bronze age) took place, we often discuss the near east. Why?
+# Because most of the ages first started there.
+
+# What does "meso" mean in Greek?
+# Middle.
+
+# Why do we call the mesolithic that?
+# Because it's the middle age between paleolithic and neolithic.
+
+# What is the Greek-sounding name for the Ice Age?
+# What is a simpler way to call the Pleistocene?
+
+# What is the "cene" for the current human epoch?
+# Holocene.
+
+# What is the Greek-sounding name for the Stone Age?
+# What is the normal way to say "Paleolithic"?
+
+# What Earth-scale event precipitated the neolitic period?
+# End of the ice age.
+
+# What do you call a binary tree where every level is fully filled, except possibly the last, and every leaf is as left as possible?
+# What is a complete binary tree?
+
+# How can I remember that a full binary tree deals with the number of children?
+# Think of full house (which has to do with children and a big family).
+
+#When using xset to turn off my display, why should I sleep before invoking the xset command?
+#The remnant signals from my keyboard might wake the display back up.
